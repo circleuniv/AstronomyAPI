@@ -2,9 +2,9 @@ import os
 import streamlit as st
 import requests
 
-#暫時不用自己的KEY, 因為content-key 在 streamlit 會出錯, 目前無解
-#api_key=os.environ.get("NASA_API_KEY")
-url=f"https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
+api_key=st.secrets["NASA_API_KEY"]
+#os.environ.get("NASA_API_KEY")
+url=f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
 
 resp=requests.get(url)
 content=resp.json()
